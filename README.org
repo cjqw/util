@@ -1,0 +1,5 @@
+* util.py
+This lib includes some util functions that would be convenient
+in development.
+
+The main idea of these functions are inspired by clojure.
