@@ -39,6 +39,20 @@ class utilTestCase(unittest.TestCase):
         assert eqv(self.randv,f())
         assert eqv(self.randv,f(1,2,3,4,5,6,7))
 
+    def test_add(self):
+        x,y = random(),random()
+        assert x+y == add(x,y)
+        # Test with multiple inputs
+        x,y,z = 'ab','cd','ef'
+        assert x+y+z == add(x,y,z)
+        assert add(*self.onev) == len(self.onev)
+
+    def test_mapv(self):
+        assert eqv(self.randv,mapv(identity(),self.randv))
+        lst = self.onev
+        res = mapv(add,lst,lst)
+        for item in res: assert item == 2
+        assert len(res) == len(lst)
 
 
 if __name__ == '__main__':

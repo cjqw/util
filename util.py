@@ -12,17 +12,14 @@ def constant(c):
         return const
     return partial(const_function,c)
 
-def add(x,y):
+def add(*args):
     """Return the sum of the input"""
-    return x + y
+    def add2(x,y): return x + y
+    return reduce(add2,args)
 
-def mapv(f,x):
+def mapv(f,*lst):
     """Return a vector of the result of map"""
-    return list(map(f,x))
-
-def reducev(f,x):
-    """Return a vector of the result of reduce"""
-    return list(reduce(f,x))
+    return list(map(f,*lst))
 
 def sequence(n,f = constant(0)):
     """Return a vector of length n, and initialize the i'th
