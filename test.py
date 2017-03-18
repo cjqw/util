@@ -80,6 +80,7 @@ class utilTestCase(unittest.TestCase):
         mat = [0,[1,[[[2]]]],3,[[4]],[[[]]],[]]
         assert eqv(flat(mat),[0,1,2,3,4])
         assert eqv(self.incv,flat(self.incv))
+        assert eqv([self.x],flat(self.x))
 
 if __name__ == '__main__':
     unittest.main()
