@@ -37,5 +37,10 @@ def matrix(n,m,f = constant(0)):
     return [[f(i,j) for j in range(0,m)] for i in range(0,n)]
 
 def flat(v):
-    """Return a flat vector which contains the elements of v in their origin order."""
+    """Return a flat vector which contains the elements of v in their
+    origin order.If the input is not a vector, return a vector which
+    only contains the input."""
     # how to implement vector? ?
+    if not isinstance(v,list): return [v]
+    if not v: return []
+    return reduce(add,mapv(flat,v))
