@@ -1,4 +1,4 @@
-from functools import reduce
+from functools import reduce,partial
 
 def identity():
     """Return an lambda expression which returns the input
@@ -6,9 +6,11 @@ def identity():
     return lambda x: x
 
 def constant(c):
-    """Return an lambda expression which always
-    returns the input constant"""
-    return lambda x: c
+    """Return an function which always
+    returns the input constant c"""
+    def const_function(const,*args):
+        return const
+    return partial(const_function,c)
 
 def add(x,y):
     """Return the sum of the input"""
