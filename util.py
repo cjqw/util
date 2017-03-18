@@ -21,18 +21,19 @@ def mapv(f,*lst):
     """Return a vector of the result of map"""
     return list(map(f,*lst))
 
+def vector(*args):
+    """Return a vector of input parameters."""
+    return args
+
 def sequence(n,f = constant(0)):
     """Return a vector of length n, and initialize the i'th
     item with f(i).By default the vector will initialized with 0."""
     return [f(i) for i in range(0,n)]
 
-def matrix(n,m,f):
+def matrix(n,m,f = constant(0)):
     """Return a 2-dim vector which contains n vectors with length m.
     The j's item of vector i will be initialized by f(i,j).By default,
     the vector will be initialized with 0."""
-    # How to set default f ???
-    # Maybe I need to change the definition of constant
-    # return sequence(n,lambda x: [sequence(m, partial(f,i))])
     return [[f(i,j) for j in range(0,m)] for i in range(0,n)]
 
 def flat(v):

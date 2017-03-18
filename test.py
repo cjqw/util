@@ -54,6 +54,13 @@ class utilTestCase(unittest.TestCase):
         for item in res: assert item == 2
         assert len(res) == len(lst)
 
+    def test_vector(self):
+        assert eqv(vector(*self.randv),self.randv)
+        assert eqv(vector(*self.onev),self.onev)
+        assert eqv([1,2,3],vector(1,*[2,3]))
+        assert self.x == vector(self.x)[0]
+
+
 
 if __name__ == '__main__':
     unittest.main()
