@@ -60,6 +60,21 @@ class utilTestCase(unittest.TestCase):
         assert eqv([1,2,3],vector(1,*[2,3]))
         assert self.x == vector(self.x)[0]
 
+    def test_sequence(self):
+        assert eqv(self.zerov,sequence(len(self.zerov)))
+        assert eqv(self.incv,sequence(len(self.incv),identity()))
+        f = lambda x : x * self.x
+        assert eqv(mapv(f,self.incv),
+                   sequence(len(self.incv),f))
+
+    def test_matrix(self):
+        mat = matrix(5,5,constant(self.x))
+        for item in mat:
+            assert eqv(item,sequence(5,constant(self.x)))
+        mat = matrix(5,5,vector)
+        for i in range(0,5):
+            item = mat[i]
+            assert eqv(item,sequence(5,partial(vector,i)))
 
 
 if __name__ == '__main__':
