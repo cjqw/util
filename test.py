@@ -69,7 +69,8 @@ class utilTestCase(unittest.TestCase):
 
     def test_matrix(self):
         mat = matrix(5,5,constant(self.x))
-        for item in mat:
+        for i in range(0,5):
+            item = mat[i]
             assert eqv(item,sequence(5,constant(self.x)))
         mat = matrix(5,5,vector)
         for i in range(0,5):

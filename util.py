@@ -7,18 +7,18 @@ def identity():
 
 def constant(c):
     """Return an function which always
-    returns the input constant c"""
+    returns the input constant c."""
     def const_function(const,*args):
         return const
     return partial(const_function,c)
 
 def add(*args):
-    """Return the sum of the input"""
+    """Return the sum of the input."""
     def add2(x,y): return x + y
     return reduce(add2,args)
 
 def mapv(f,*lst):
-    """Return a vector of the result of map"""
+    """Return a vector of the result of map."""
     return list(map(f,*lst))
 
 def vector(*args):
@@ -40,7 +40,6 @@ def flat(v):
     """Return a flat vector which contains the elements of v in their
     origin order.If the input is not a vector, return a vector which
     only contains the input."""
-    # how to implement vector? ?
     if not isinstance(v,list): return [v]
     if not v: return []
     return reduce(add,mapv(flat,v))
