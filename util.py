@@ -52,7 +52,6 @@ def partition(v,f):
         s = result.get(key)
         if s:
             s.append(item)
-            result.update({key:s})
         else:
             result.update({key:[item]})
     return result
