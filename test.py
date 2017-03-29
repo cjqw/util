@@ -13,11 +13,11 @@ def eqv(a,b):
     return True
 
 def eqm(a,b):
-    for item in a:
-        if not eqv(a.get(item),b.get(item)):
+    for key in a:
+        if not eqv(a.get(key),b.get(key)):
             return False
-    for item in b:
-        if not eqv(a.get(item),b.get(item)):
+    for key in b:
+        if not eqv(a.get(key),b.get(key)):
             return False
     return True
 
@@ -33,9 +33,9 @@ class utilTestCase(unittest.TestCase):
 
     def test_identity(self):
         # Test when the input is a double
-        assert self.x == (identity())(self.x)
+        assert self.x == (identity)(self.x)
         # Test when the input is a vector
-        assert eqv(self.randv,identity()(self.randv))
+        assert eqv(self.randv,identity(self.randv))
 
     def test_constant(self):
         # Test when input is a double
@@ -57,7 +57,7 @@ class utilTestCase(unittest.TestCase):
         assert add(*self.onev) == len(self.onev)
 
     def test_mapv(self):
-        assert eqv(self.randv,mapv(identity(),self.randv))
+        assert eqv(self.randv,mapv(identity,self.randv))
         lst = self.onev
         res = mapv(add,lst,lst)
         for item in res: assert item == 2
@@ -71,7 +71,7 @@ class utilTestCase(unittest.TestCase):
 
     def test_sequence(self):
         assert eqv(self.zerov,sequence(len(self.zerov)))
-        assert eqv(self.incv,sequence(len(self.incv),identity()))
+        assert eqv(self.incv,sequence(len(self.incv),identity))
         f = lambda x : x * self.x
         assert eqv(mapv(f,self.incv),
                    sequence(len(self.incv),f))
@@ -94,9 +94,9 @@ class utilTestCase(unittest.TestCase):
 
     def test_partition(self):
         s = self.onev
-        assert eqm({1:s},partition(s,identity()))
+        assert eqm({1:s},partition(s,identity))
         s = [1,1,1,2,2,3]
-        assert eqm({1:[1,1,1],2:[2,2],3:[3]},partition(s,identity()))
+        assert eqm({1:[1,1,1],2:[2,2],3:[3]},partition(s,identity))
         s = [1,2,3,-1,-2,-3]
         assert eqm({True:[1,2,3],False:[-1,-2,-3]},partition(s,lambda x: x > 0))
 

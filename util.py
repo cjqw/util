@@ -1,9 +1,8 @@
 from functools import reduce,partial
 
-def identity():
-    """Return an lambda expression which returns the input
-    itself."""
-    return lambda x: x
+def identity(x):
+    """Return the input itself."""
+    return x
 
 def constant(c):
     """Return an function which always
