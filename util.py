@@ -43,3 +43,17 @@ def flat(v):
     if not isinstance(v,list): return [v]
     if not v: return []
     return reduce(add,mapv(flat,v))
+
+def partition(v,f):
+    """Partition vector v by f(v[i]).
+    e.g. partition([1,2,3,1,2,3],identity()) == {1:[1,1,1], 2:[2,2], 3:[3]}"""
+    result = {}
+    for item in v:
+        key = f(item)
+        s = result.get(key)
+        if s:
+            s.append(item)
+            result.update({key:s})
+        else:
+            result.update({key:[item]})
+    return result

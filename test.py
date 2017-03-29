@@ -12,6 +12,15 @@ def eqv(a,b):
         if a[i] != b[i]: return False
     return True
 
+def eqm(a,b):
+    for item in a:
+        if not eqv(a.get(item),b.get(item)):
+            return False
+    for item in b:
+        if not eqv(a.get(item),b.get(item)):
+            return False
+    return True
+
 class utilTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -82,6 +91,14 @@ class utilTestCase(unittest.TestCase):
         assert eqv(flat(mat),[0,1,2,3,4])
         assert eqv(self.incv,flat(self.incv))
         assert eqv([self.x],flat(self.x))
+
+    def test_partition(self):
+        s = self.onev
+        assert eqm({1:s},partition(s,identity()))
+        s = [1,1,1,2,2,3]
+        assert eqm({1:[1,1,1],2:[2,2],3:[3]},partition(s,identity()))
+        s = [1,2,3,-1,-2,-3]
+        assert eqm({True:[1,2,3],False:[-1,-2,-3]},partition(s,lambda x: x > 0))
 
 if __name__ == '__main__':
     unittest.main()
