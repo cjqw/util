@@ -99,6 +99,8 @@ class utilTestCase(unittest.TestCase):
         assert eqm({1:[1,1,1],2:[2,2],3:[3]},partition(s,identity))
         s = [1,2,3,-1,-2,-3]
         assert eqm({True:[1,2,3],False:[-1,-2,-3]},partition(s,lambda x: x > 0))
+        s = [1,1,1,2,2,3]
+        assert eqm({1:[1,1,1],2:[2,2],3:[3]},partition(s))
 
 if __name__ == '__main__':
     unittest.main()

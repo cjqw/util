@@ -43,9 +43,10 @@ def flat(v):
     if not v: return []
     return reduce(add,mapv(flat,v))
 
-def partition(v,f):
+def partition(v,f = identity):
     """Partition vector v by f(v[i]).
-    e.g. partition([1,2,3,1,2,3],identity()) == {1:[1,1,1], 2:[2,2], 3:[3]}"""
+    e.g. partition([1,2,3,1,2,3],identity()) == {1:[1,1,1], 2:[2,2], 3:[3]}
+    By default, the vector will be partitioned by identity function."""
     result = {}
     for item in v:
         key = f(item)
