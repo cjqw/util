@@ -58,6 +58,11 @@ def partition(v,f = identity):
             result.update({key:[item]})
     return result
 
+def getValue(key):
+    """Return a function which returns the value of key in a hash-map.
+    TODO unittest"""
+    return lambda x: x[key]
+
 # This class comes from stackOverFlow
 # http://stackoverflow.com/questions/431684/how-do-i-cd-in-python
 # Thanks to Brian M. Hunt
