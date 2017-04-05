@@ -63,6 +63,15 @@ def getValue(key):
     TODO unittest"""
     return lambda x: x[key]
 
+def mapValue(f,m):
+    """Replace each value in hash-map m with f(value).
+    Return the new hash-map.
+    TODO unittest"""
+    res = {}
+    for key in m:
+        res.update({key: f(m[key])})
+    return res
+
 # This class comes from stackOverFlow
 # http://stackoverflow.com/questions/431684/how-do-i-cd-in-python
 # Thanks to Brian M. Hunt
