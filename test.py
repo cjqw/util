@@ -48,6 +48,12 @@ class utilTestCase(unittest.TestCase):
         assert eqv(self.randv,f())
         assert eqv(self.randv,f(1,2,3,4,5,6,7))
 
+    def test_inc(self):
+        f = inc(3)
+        assert f(2) == 5
+        assert f(5) == 8
+        assert inc()(3) == 4
+
     def test_add(self):
         x,y = random(),random()
         assert x+y == add(x,y)
