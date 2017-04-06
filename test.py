@@ -102,5 +102,11 @@ class utilTestCase(unittest.TestCase):
         s = [1,1,1,2,2,3]
         assert eqm({1:[1,1,1],2:[2,2],3:[3]},partition(s))
 
+    def test_getValue(self):
+        m = {'a' : 0 , 'b' : 1 , 'c' : 2}
+        assert 0 == getValue('a')(m)
+        assert 1 == getValue('b')(m)
+        assert 2 == getValue('c')(m)
+
 if __name__ == '__main__':
     unittest.main()

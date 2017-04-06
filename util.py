@@ -59,8 +59,7 @@ def partition(v,f = identity):
     return result
 
 def getValue(key):
-    """Return a function which returns the value of key in a hash-map.
-    TODO unittest"""
+    """Return a function which returns the value of key in a hash-map."""
     return lambda x: x[key]
 
 def mapValue(f,m):
