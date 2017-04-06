@@ -108,5 +108,15 @@ class utilTestCase(unittest.TestCase):
         assert 1 == getValue('b')(m)
         assert 2 == getValue('c')(m)
 
+    def test_mapValue(self):
+        m = {'a' : 0 , 'b' : 1 , 'c' : 2}
+        res = mapValue(lambda x: x * 2,m)
+        assert 0 == getValue('a')(res)
+        assert 2 == getValue('b')(res)
+        assert 4 == getValue('c')(res)
+        assert 0 == getValue('a')(m)
+        assert 1 == getValue('b')(m)
+        assert 2 == getValue('c')(m)
+
 if __name__ == '__main__':
     unittest.main()

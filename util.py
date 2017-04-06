@@ -59,13 +59,13 @@ def partition(v,f = identity):
     return result
 
 def getValue(key):
-    """Return a function which returns the value of key in a hash-map."""
+    """Return a function which returns the value of key in a hash-map.
+    If the key do not exist, it will throw an error."""
     return lambda x: x[key]
 
 def mapValue(f,m):
     """Replace each value in hash-map m with f(value).
-    Return the new hash-map.
-    TODO unittest"""
+    Return the new hash-map."""
     res = {}
     for key in m:
         res.update({key: f(m[key])})
