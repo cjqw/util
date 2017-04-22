@@ -124,5 +124,13 @@ class utilTestCase(unittest.TestCase):
         assert 1 == getValue('b')(m)
         assert 2 == getValue('c')(m)
 
+    def test_buildMap(self):
+        x = [0,1]
+        y = [2,3]
+        z = buildMap('x',x,'y',y)
+        for i in [0,1]:
+            assert z[i]['x'] == x[i]
+            assert z[i]['y'] == y[i]
+
 if __name__ == '__main__':
     unittest.main()

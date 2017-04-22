@@ -76,6 +76,24 @@ def mapValue(f,m):
         res.update({key: f(m[key])})
     return res
 
+def buildMap(*args):
+    """
+    e.g.
+    x = [0,1]
+    y = [2,3]
+    buildMap('x',x,'y',y) = [{'x' : 0, 'y' : 2}, {'x': 1, 'y': 3}]
+    """
+    def update(m1,m2):
+        m1.update(m2)
+    map_items = len(args) >> 1
+    result = [{} for i in range(len(args[1]))]
+    for i in range(0,map_items):
+        key = args[i << 1]
+        new_item = mapv(lambda x: {key: x},
+                        args[(i << 1) + 1])
+        mapv(update,result,new_item)
+    return result
+
 
 # This class comes from stackOverFlow
 # http://stackoverflow.com/questions/431684/how-do-i-cd-in-python
