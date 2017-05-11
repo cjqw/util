@@ -12,11 +12,6 @@ def constant(c):
         return const
     return partial(const_function,c)
 
-def inc(c = 1):
-    """Return a function which reads an input x and returns x + c as output.
-    By default, c equals 1."""
-    return lambda x: x + c
-
 def add(*args):
     """Return the sum of the input."""
     def add2(x,y): return x + y
