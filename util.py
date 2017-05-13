@@ -89,6 +89,12 @@ def buildMap(*args):
         mapv(update,result,new_item)
     return result
 
+def getItem(index):
+    """
+    Return a function which returns the index's item in a list/map.
+    """
+    return lambda s: s[index]
+
 
 # This class comes from stackOverFlow
 # http://stackoverflow.com/questions/431684/how-do-i-cd-in-python
