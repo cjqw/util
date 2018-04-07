@@ -3,6 +3,7 @@
 import unittest
 from util import *
 from random import *
+from functools import partial
 
 def eqv(a,b):
     """To tell if two vectors contains the same item in the same place.
@@ -125,6 +126,13 @@ class utilTestCase(unittest.TestCase):
         for i in [0,1]:
             assert z[i]['x'] == x[i]
             assert z[i]['y'] == y[i]
+
+    def test_threadFirst(self):
+        inc = partial(add,1)
+        x = 1
+        y = threadFirst(x,inc,inc)
+        assert y == 3
+        assert x == 1
 
 if __name__ == '__main__':
     unittest.main()

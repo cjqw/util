@@ -89,6 +89,14 @@ def buildMap(*args):
         mapv(update,result,new_item)
     return result
 
+def threadFirst(x, *functions):
+    """
+    thread-first macro in Clojure.
+    """
+    for f in functions:
+        x = f(x)
+    return x
+
 
 # This class comes from stackOverFlow
 # http://stackoverflow.com/questions/431684/how-do-i-cd-in-python
