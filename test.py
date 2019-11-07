@@ -134,12 +134,21 @@ class utilTestCase(unittest.TestCase):
             assert z[i]['x'] == x[i]
             assert z[i]['y'] == y[i]
 
-    def test_threadFirst(self):
-        inc = partial(add,1)
+    def test_threadFirst_normal(self):
         x = 1
-        y = threadFirst(x,inc,inc)
+        y = threadFirst(x,
+                        [add, 1],
+                        [add, 1])
         assert y == 3
         assert x == 1
+
+    def test_threadFirst_input_list(self):
+        x = [1,2,3]
+        y = threadFirst(x,
+                        [add, [4]],
+                        [add, [5]])
+        assert eqv(y,[5,4,1,2,3])
+        assert eqv(x,[1,2,3])
 
 if __name__ == '__main__':
     unittest.main()

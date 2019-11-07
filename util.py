@@ -1,6 +1,8 @@
 import os
 from functools import reduce,partial
 
+__FUNCTION_TYPE__ = type(lambda x : x)
+
 def identity(x):
     """Return the input itself."""
     return x
@@ -97,7 +99,12 @@ def threadFirst(x, *functions):
     thread-first macro in Clojure.
     """
     for f in functions:
-        x = f(x)
+        if type(f) is list:
+            x = f[0](*(f[1:] + [x]))
+        elif type(f) is __FUNCTION_TYPE__:
+            x = f(x)
+        else:
+            raise Exception('unable to handle function ' + f)
     return x
 
 
