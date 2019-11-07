@@ -64,6 +64,13 @@ class utilTestCase(unittest.TestCase):
         for item in res: assert item == 2
         assert len(res) == len(lst)
 
+    def test_filterv(self):
+        lst = [1,2,3,4]
+        assert eqv([1,3],filterv(lambda x : x % 2 == 1, lst))
+        assert eqv([2,4],filterv(lambda x : x % 2 == 0, lst))
+        assert eqv(lst,filterv(constant(True), lst))
+        assert eqv([],filterv(constant(False), lst))
+
     def test_vector(self):
         assert eqv(vector(*self.randv),self.randv)
         assert eqv(vector(*self.onev),self.onev)

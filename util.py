@@ -17,6 +17,9 @@ def add(*args):
     def add2(x,y): return x + y
     return reduce(add2,args)
 
+def filterv(f, lst):
+    return list(filter(f, lst))
+
 def mapv(f,*lst):
     """Return a vector of the result of map."""
     return list(map(f,*lst))
